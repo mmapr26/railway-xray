@@ -1,0 +1,5 @@
+{
+  "name": "xray",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "postStartCommand": "bash .devcontainer/start-xray.sh || true"
+}
