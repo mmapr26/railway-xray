@@ -7,6 +7,9 @@ if [ -z "$UUID" ] || [ -z "$WSPATH" ]; then
 fi
 export PORT="${PORT:-8080}"
 pkill -f "xray run -config" 2>/dev/null || true
+if ! command -v unzip >/dev/null 2>&1 || ! command -v curl >/dev/null 2>&1; then
+  sudo apt-get update -y && sudo apt-get install -y unzip curl
+fi
 if [ ! -x /tmp/xray ]; then
   curl -sL -o /tmp/xray.zip https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip && unzip -o /tmp/xray.zip xray -d /tmp >/dev/null && chmod +x /tmp/xray
 fi
